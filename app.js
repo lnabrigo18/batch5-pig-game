@@ -11,8 +11,7 @@ GAME RULES:
 
 let playerTurn = "playerOne";
 
-let dieOne = [1, 2, 3, 4, 5, 6];
-let dieTwo = [1, 2, 3, 4, 5, 6];
+let dice = [1, 2, 3, 4, 5, 6];
 
 let playerScores = [
   {
@@ -42,8 +41,8 @@ document.querySelector(".btn-new").addEventListener("click", function () {
 
 function getDieNumbers() {
   return {
-    dieOneNumber: dieOne[Math.floor(Math.random() * 6)],
-    dieTwoNumber: dieTwo[Math.floor(Math.random() * 6)],
+    dieOneNumber: dice[Math.floor(Math.random() * 6)],
+    dieTwoNumber: dice[Math.floor(Math.random() * 6)],
   };
 }
 
