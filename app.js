@@ -62,11 +62,11 @@ function rollDice() {
     let result = getDiceResult(dieNumbers);
     displayDice(dieNumbers);
     if (result) {
-      playerScores[0].roundScore += result;
-      displayP1RoundResult(playerScores[0].roundScore);
+      playerScores[0].currentScore += result;
+      displayP1CurrentResult(playerScores[0].currentScore);
     } else {
-      playerScores[0].roundScore = 0;
-      displayP1RoundResult(playerScores[0].roundScore);
+      playerScores[0].currentScore = 0;
+      displayP1CurrentResult(playerScores[0].currentScore);
       switchPlayerTurn();
     }
   } else {
@@ -74,11 +74,11 @@ function rollDice() {
     let result = getDiceResult(dieNumbers);
     displayDice(dieNumbers);
     if (result) {
-      playerScores[1].roundScore += result;
-      displayP2RoundResult(playerScores[1].roundScore);
+      playerScores[1].currentScore += result;
+      displayP2CurrentResult(playerScores[1].currentScore);
     } else {
-      playerScores[1].roundScore = 0;
-      displayP2RoundResult(playerScores[1].roundScore);
+      playerScores[1].currentScore = 0;
+      displayP2CurrentResult(playerScores[1].currentScore);
       switchPlayerTurn();
     }
   }
@@ -88,16 +88,16 @@ function hold(playerScores) {
   let p1 = playerScores[0];
   let p2 = playerScores[1];
   if (playerTurn === "playerOne") {
-    p1.currentScore += p1.roundScore;
-    p1.roundScore = 0;
-    displayP1CurrentResult(p1.currentScore);
+    p1.roundScore += p1.currentScore;
+    p1.currentScore = 0;
     displayP1RoundResult(p1.roundScore);
+    displayP1CurrentResult(p1.currentScore);
     switchPlayerTurn();
   } else {
-    p2.currentScore += p2.roundScore;
-    p2.roundScore = 0;
-    displayP2CurrentResult(p2.currentScore);
+    p2.roundScore += p2.currentScore;
+    p2.currentScore = 0;
     displayP2RoundResult(p2.roundScore);
+    displayP2CurrentResult(p2.currentScore);
     switchPlayerTurn();
   }
   checkWinner();
@@ -106,11 +106,11 @@ function hold(playerScores) {
 function checkWinner() {
   let p1 = playerScores[0];
   let p2 = playerScores[1];
-  if (p1.currentScore > 99) {
+  if (p1.roundScore > 99) {
     alert("Winner - Player 1");
     reset();
   }
-  if (p2.currentScore > 99) {
+  if (p2.roundScore > 99) {
     alert("Winner  - Player 2");
     reset();
   }
